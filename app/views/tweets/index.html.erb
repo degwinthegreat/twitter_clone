@@ -1,0 +1,22 @@
+<div class="main_contents">
+    <h1 class="text_center">つぶやき一覧</h1>
+    <p><%= notice %></p>
+        <% @tweets.each do |tweet| %>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><%= tweet.id %></h3>
+                </div>
+                <div class="panel-body">
+                    <%= tweet.content %>
+                
+                    <%= link_to '　詳細を確認する　', tweet_path(tweet.id) %>
+                    <%= link_to "　つぶやきを編集する　", edit_tweet_path(tweet.id), data: { confirm: '本当に編集していいでいいですか？' } %>
+                    <%= link_to '　つぶやきを削除する　', tweet_path(tweet.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %>
+                </div>
+            </div>
+        <% end %>
+
+    
+
+<%= link_to 'つぶやきを投稿する', new_tweet_path %>
+</div>

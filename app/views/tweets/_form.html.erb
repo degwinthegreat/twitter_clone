@@ -1,0 +1,20 @@
+<%= form_with(model: @tweet, url:choose_new_or_edit, local: true) do |form| %>
+    <% if @tweet.errors.any? %>
+        <div id="error_explanation">
+            <h3><%= @tweet.errors.count %>件のエラーがあります。</h3>
+            <ul>
+                <% @tweet.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <h2 class="text_center">つぶやきを投稿する</h2>
+        <div class="tweet_form text_center">
+            <%= form.text_field :content ,class:'form-group form-control'%>
+        </div>
+        <div class="confirm_button text_center">
+            <%= form.submit :'確認画面に進む' ,class: 'btn btn-success' %><span class="glyphicon glyphicon-chevron-right"></span>
+            <% end %>
+        </div>
+<%= link_to "つぶやき一覧画面にもどる", tweets_path %>

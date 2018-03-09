@@ -1,0 +1,25 @@
+.navbar-default .navbar-brand {
+    background-color: #FFF;
+    color: #1da1f2;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #1da1f2;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #1da1f2;
+}
+
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header　{
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.well {
+    background-color: #FFF;
+}
+
+.h1 .page_title{
+    text-align: center;
+}

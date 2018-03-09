@@ -1,0 +1,22 @@
+<h3 class="text_center">以下の内容で、送信する。</h3>
+
+<%= form_with(model: @tweet, url: tweets_path, local: true)do |form| %>
+    <%= form.hidden_field :content %>
+    
+    
+    <p class="text_center">本文:<%=  @tweet.content %></p>
+    <div class="send_button">
+        <div class="confirm_button text_center">
+            <%= form.submit "送信する" ,class: 'btn btn-success' %><span class="glyphicon glyphicon-chevron-right"></span>
+        </div>
+    </div>
+<% end %>
+    
+    
+    <div class="back_button">
+    <%= form_with(model: @tweet, url: new_tweet_path, local: true, method: 'get') do |form| %>
+        <div class="confirm_button text_center">
+        <%= form.hidden_field :content %>
+        <%= form.submit "もどる", name: 'back' ,class: 'btn btn-success' %><span class="glyphicon glyphicon-chevron-right"></span>
+    <% end %>
+    </div>

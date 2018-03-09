@@ -1,0 +1,31 @@
+<div class="post_link">
+    <h1>
+        <a href="/tweets/new" class="typewrite" data-period="2000" data-type='[ "140文字以内でつぶやいてみよう！"]'>
+            <span class="wrap"></span>
+        </a>
+    </h1>
+</div>
+
+
+<div class="page_title">
+    <h2 class="text_center">最近の投稿</h2>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Content</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @tweet.each do |tweet| %>
+            <tr>
+                <th scope="row"><%= tweet.id %></th>
+                <td><%= tweet.content %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>

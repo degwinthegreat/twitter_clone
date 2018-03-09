@@ -1,0 +1,59 @@
+.navbar {
+    background-color: #FFF;
+    border: solid #e6ecf0;
+    color: #1da1f2;
+    font-size:20px;
+    font-weight:bold;
+    text-align:left;
+    width: 100%;
+}
+
+.navbar-nav {
+    float: right;
+    width: auto;
+}
+
+footer {
+    width: 100%;
+    color: #4AB3F4;
+    padding: 20px 0 10px 0;
+    margin: auto;
+    padding-bottom: 10px;
+    font-size: 12px;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    background-color: #FFF;
+    border: solid #e6ecf0;
+    padding-top: 20px;
+}
+
+body {
+    background-color: #e6ecf0;
+    color: #14171a;
+    font-size: 14px;
+}
+
+.h1 .page_title {
+    text-align: center;
+}
+
+.post_link {
+    text-align: center;
+}
+
+.text_center {
+    text-align: center;
+}
+
+.main_contents {
+    padding-bottom: 60px;
+}
+
+.send_button {
+    margin: 5px;
+}
+
+.back_button {
+    margin: 5px;
+}
