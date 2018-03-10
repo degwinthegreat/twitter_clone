@@ -20,6 +20,6 @@
     background-color: #FFF;
 }
 
-.h1 .page_title{
-    text-align: center;
+.glyphicon-chevron-right:before {
+    content: none;
 }
