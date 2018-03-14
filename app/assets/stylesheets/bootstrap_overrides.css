@@ -22,4 +22,5 @@
 
 .glyphicon-chevron-right:before {
     display: block;
+    content: initial;
 }
