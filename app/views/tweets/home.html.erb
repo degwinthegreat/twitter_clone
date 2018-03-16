@@ -11,7 +11,7 @@
     <h2 class="text_center">最近の投稿</h2>
 </div>
 
-<div class="table-responsive">
+<div class="table-responsive hidden-xs">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -28,4 +28,22 @@
         <% end %>
         </tbody>
     </table>
+</div>
+<div class="tweet-panel hidden-lg hidden-mg hidden-sm col-xs-12">
+    <div class="panel panel-default">
+        <% @tweet.each do |tweet| %>
+        <div class="panel-container">
+            <div class="panel-heading">
+                <h3 class="panel-title"><%= tweet.id %></h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-10">
+                        <%= tweet.content %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
 </div>

@@ -24,3 +24,7 @@
     display: block;
     content: initial;
 }
+
+.panel-default>.panel-heading {
+    background-color: white;
+}
