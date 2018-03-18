@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only:[:show, :edit, :update, :destroy]
-  before_action :login_check, only:[:new, :edit, :show]
+  before_action :login_check, only:[:new, :edit, :show, :index]
 
   def index
     @tweets = Tweet.all
@@ -64,7 +64,9 @@ class TweetsController < ApplicationController
   end
 
   def login_check
-    if @currnet_user.nil?
+    if logged_in?
+    else
+      flash[:notice] = "権限がありません"
       redirect_to new_session_path
     end
   end
