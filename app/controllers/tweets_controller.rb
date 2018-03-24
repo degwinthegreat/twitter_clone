@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only:[:show, :edit, :update, :destroy]
+  before_action :set_tweet, only:[:show, :edit, :update, :destroy,]
   before_action :login_check, only:[:new, :edit, :show, :index]
 
   def index
@@ -17,6 +17,7 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new(tweet_params)
+    @tweet.user_id = current_user.id
     if @tweet.save
       redirect_to tweets_path, notice: "つぶやきを作成しました！"
     else
@@ -30,6 +31,8 @@ class TweetsController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites
+    @favorite = @favorite.where(user_id: current_user.id)
   end
 
   def edit
@@ -56,7 +59,7 @@ class TweetsController < ApplicationController
 
   private
   def tweet_params
-    params.require(:tweet).permit(:content)
+    params.require(:tweet).permit(:user_id, :content)
   end
 
   def set_tweet
@@ -64,10 +67,13 @@ class TweetsController < ApplicationController
   end
 
   def login_check
-    if logged_in?
-    else
+    unless logged_in?
       flash[:notice] = "権限がありません"
       redirect_to new_session_path
     end
+  end
+
+  def session_user
+    session.session_id
   end
 end
