@@ -8,6 +8,7 @@
         </div>
         <div class="panel-body">
             <%= tweet.content %>
+            <%= link_to '　詳細を確認する　', tweet_path(tweet.id) %>
         </div>
     </div>
 <% end %>
