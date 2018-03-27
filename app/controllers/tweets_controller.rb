@@ -18,10 +18,24 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
+    respond_to do |format|
     if @tweet.save
-      redirect_to tweets_path, notice: "つぶやきを作成しました！"
+      TweetMailer.tweet_email(@current_user, @tweet).deliver
+      format.html { redirect_to tweets_path, notice: 'Tweet was successfully created.' }
+      format.json { render :show, status: :created, location: @tweet }
     else
-      render 'new'
+      format.html { render :new }
+      format.json { render json: @tweet.errors, status: :unprocessable_entity }
+    end
+
+      #if @post.save
+        #TweetMailer.post_email(current_user, @tweet)
+        #format.html { redirect_to @post, notice: 'Tweet was successfully created.' }
+        #format.json { render :show, status: :created, location: @post }
+      #else
+        #format.html { render :new }
+        #format.json { render json: @post.errors, status: :unprocessable_entity }
+      #end
     end
   end
 
