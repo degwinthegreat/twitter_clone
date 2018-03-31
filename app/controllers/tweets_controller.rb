@@ -18,7 +18,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
-    @tweet.picture.retrieve_from_cache! params[:cache][:picture]
+    @tweet.picture.retrieve_from_cache! params[:cache][:picture] unless params[:cache][:picture].blank?
     respond_to do |format|
     if @tweet.save
       TweetMailer.tweet_email(@current_user, @tweet).deliver

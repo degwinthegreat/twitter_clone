@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
+    <div class="header">
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -32,6 +34,7 @@
         </div>
       </div>
     </nav>
+  </div>
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
@@ -46,9 +49,11 @@
 
     <%= yield %>
 
-    <footer>
-      <p>PHASE2大課題</p>
-      <p>2018.03.07</p>
+    <footer class="footer">
+      <div class="container">
+        <p>PHASE2大課題</p>
+        <p>2018.03.07</p>
+      </div>
     </footer>
 
   </div>

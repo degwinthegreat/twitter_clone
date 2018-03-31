@@ -13,14 +13,20 @@
     width: auto;
 }
 
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
 footer {
     width: 100%;
     color: #4AB3F4;
-    padding: 20px 0 10px 0;
-    margin: auto;
+    margin: 0;
     padding-bottom: 10px;
     font-size: 12px;
-    position: fixed;
+    position: fixed; left: 0;
     bottom: 0;
     text-align: center;
     background-color: #FFF;
@@ -32,6 +38,7 @@ body {
     background-color: #e6ecf0;
     color: #14171a;
     font-size: 14px;
+    overflow: scroll;
 }
 
 .h1 .page_title {
@@ -69,4 +76,8 @@ body {
     border: black;
     margin-bottom: 10px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+
+.container {
+  width: 100%
 }
