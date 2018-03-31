@@ -15,10 +15,8 @@
 
 
     <p class="text_center">本文:<%=  @tweet.content %></p>
-    <% unless @tweet.picture.blank? %>
-    <p class="text_center">画像:<%= image_tag (@tweet.picture.url) %>
+    <p class="text_center">画像:<%= image_tag (@tweet.picture.url) if @tweet.picture.present? %>
     <%= hidden_field_tag :"cache[picture]",@tweet.picture.cache_name %>
-    <% end %>
     <div class="send_button">
         <div class="confirm_button text_center">
             <%= form.submit "送信する" ,class: 'btn btn-success' %><span class="glyphicon glyphicon-chevron-right"></span>
@@ -34,4 +32,4 @@
         <%= form.hidden_field :picutre_cache %>
         <%= form.submit "もどる", name: 'back' ,class: 'btn btn-success' %><span class="glyphicon glyphicon-chevron-right"></span>
     <% end %>
-    </div>
+  </div>

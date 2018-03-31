@@ -18,16 +18,18 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
-    @tweet.picture.retrieve_from_cache! params[:cache][:picture] unless params[:cache][:picture].blank?
+    @tweet.picture.retrieve_from_cache!(params[:cache][:image]) if params[:cache][:image].present?
     respond_to do |format|
-    if @tweet.save
-      TweetMailer.tweet_email(@current_user, @tweet).deliver
-      format.html { redirect_to tweets_path, notice: 'Tweet was successfully created.' }
-      format.json { render :show, status: :created, location: @tweet }
-    else
-      format.html { render :new }
-      format.json { render json: @tweet.errors, status: :unprocessable_entity }
+      if @tweet.save
+        TweetMailer.tweet_email(@current_user, @tweet).deliver
+        format.html { redirect_to tweets_path, notice: 'Tweet was successfully created.' }
+        format.json { render :show, status: :created, location: @tweet }
+      else
+        format.html { render :new }
+        format.json { render json: @tweet.errors, status: :unprocessable_entity }
+      end
     end
+  end
 
       #if @post.save
         #TweetMailer.post_email(current_user, @tweet)
@@ -37,9 +39,6 @@ class TweetsController < ApplicationController
         #format.html { render :new }
         #format.json { render json: @post.errors, status: :unprocessable_entity }
       #end
-    end
-  end
-
   def home
     @tweet = Tweet.order(:content)
     @tweet = Tweet.limit(10).order(:content)
