@@ -1,11 +1,21 @@
+<%= form_with(model: @tweet, url: tweets_path, local: true)do |form| %>
+<% if @tweet.errors.any? %>
+    <div id="error_explanation">
+        <h3><%= @tweet.errors.count %>件のエラーがあります。</h3>
+        <ul>
+            <% @tweet.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
 <h3 class="text_center">以下の内容で、送信する。</h3>
 
-<%= form_with(model: @tweet, url: tweets_path, local: true)do |form| %>
     <%= form.hidden_field :content %>
 
 
     <p class="text_center">本文:<%=  @tweet.content %></p>
-    <p class="text_center">画像:<%= image_tag(@tweet.picture.url) %>
+    <p class="text_center">画像:<%= image_tag (@tweet.picture.url) %>
     <%= hidden_field_tag :"cache[picture]",@tweet.picture.cache_name %>
     <div class="send_button">
         <div class="confirm_button text_center">
