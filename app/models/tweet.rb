@@ -1,4 +1,5 @@
 class Tweet < ApplicationRecord
+  mount_uploader :picture, ImageUploader
   validates :content, presence: true,length: { maximum: 140 }
   belongs_to :user
   has_many :favorites, dependent: :destroy

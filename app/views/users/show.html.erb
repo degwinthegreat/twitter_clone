@@ -1,6 +1,12 @@
+
 <h1><%= @user.name %>のページ</h1>
 
 <p>メールアドレス：<%= @user.email %></p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @user.picture %>
+</p>
 <% @favorite_tweets.each do |tweet| %>
     <div class="panel panel-default">
         <div class="panel-heading">

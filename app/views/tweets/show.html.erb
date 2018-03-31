@@ -1,6 +1,14 @@
+<p><%= notice %></p>
 <h1>つぶやき詳細</h1>
 <p>内容：<%= @tweet.content %></p>
-<p><%= notice %></p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @tweet.picture %>
+</p>
+
+<%= link_to 'Edit', edit_tweet_path(@tweet) %>
+<%= link_to 'Back', tweets_path %>
+
 <% unless @tweet.user == current_user %>
   <% if @favorite.present? %>
     <%= link_to 'お気に入り解除する', favorite_path(tweet_id: @tweet.id), method: :delete,class: 'btn btn-danger' %>

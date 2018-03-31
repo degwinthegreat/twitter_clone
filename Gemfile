@@ -5,9 +5,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
 group :development do
  gem 'letter_opener_web'
 end
+gem "mini_magick"
+gem 'carrierwave', '~> 1.0'
+gem 'faker'
 gem 'dotenv-rails'
 gem 'bcrypt', '3.1.11'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

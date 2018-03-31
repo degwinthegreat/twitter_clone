@@ -18,8 +18,9 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
+    @tweet.picture.retrieve_from_cache! params[:cache][:picture]
     respond_to do |format|
-    if @tweet.save
+    if @tweet.save!
       TweetMailer.tweet_email(@current_user, @tweet).deliver
       format.html { redirect_to tweets_path, notice: 'Tweet was successfully created.' }
       format.json { render :show, status: :created, location: @tweet }
@@ -72,7 +73,7 @@ class TweetsController < ApplicationController
 
   private
   def tweet_params
-    params.require(:tweet).permit(:user_id, :content, :tweet_id)
+    params.require(:tweet).permit(:user_id, :content, :tweet_id, :picture)
   end
 
   def set_tweet

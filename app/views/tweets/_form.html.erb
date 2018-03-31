@@ -14,6 +14,11 @@
             <%= form.text_field :content ,class:'form-group form-control'%>
             <%= form.hidden_field :user_id, value: current_user.id %>
         </div>
+        <div class="tweet_picture">
+          <%= form.label :picture %>
+          <%= form.file_field :picture, id: :tweet_picture %>
+          <%= form.hidden_field :picutre_cache %>
+        </div>
         <div class="confirm_button text_center">
             <%= form.submit :'確認画面に進む' ,class: 'btn btn-success' %><span class="glyphicon glyphicon-chevron-right"></span>
             <% end %>
